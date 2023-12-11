@@ -16,7 +16,8 @@ maxitem([V | VS], Y)            ->
     io:format("Previous list element ~p is greater than first value ~p\n", [Y, V]), 
     maxitem(VS, Y).
 
-maxitem(X) -> maxitem(X, -10000).
+maxitem([])     -> 0;
+maxitem(X)      -> maxitem(X, -10000).
 
 %d
 diff(F, X, H) ->
