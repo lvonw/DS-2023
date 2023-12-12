@@ -1,5 +1,5 @@
 -module(ex7). 
--export([convert/2, maxitem/1, diff/3]).
+-export([convert/2, maxitem/1, diff/3, test/1]).
 
 %a
 convert(X, cm)      -> {inch, X / 2.54};
@@ -23,4 +23,6 @@ maxitem([V | VS])      -> maxitem(VS, V).
 diff(F, X, H) ->
     (F(X+H) - F(X-H)) / (2*H). 
 
-%AnFunc = fun(X) -> 2 * math:pow(X, 3) - 12 * X + 3end.
+test(V) ->    
+    AnFunc = fun(X) -> 2 * math:pow(X, 3) - 12 * X + 3end,
+    diff(AnFunc, V, 1.0e-10).
