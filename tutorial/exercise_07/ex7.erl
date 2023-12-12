@@ -23,4 +23,4 @@ maxitem([V | VS])      -> maxitem(VS, V).
 diff(F, X, H) ->
     (F(X+H) - F(X-H)) / (2*H). 
 
-%AnFunc = fun(X) -> 2 * math:pow(X, 3) - 12 * X + 3
+%AnFunc = fun(X) -> 2 * math:pow(X, 3) - 12 * X + 3end.
