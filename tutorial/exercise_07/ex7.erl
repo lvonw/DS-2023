@@ -1,9 +1,9 @@
 -module(ex7). 
--export([convert/2, maxitem/1, maxitem/2, diff/3]).
+-export([convert/2, maxitem/1, diff/3]).
 
 %a
-convert(X, cm)      -> X / 2.54;
-convert(X, inch)    -> X * 2.54.
+convert(X, cm)      -> {inch, X / 2.54};
+convert(X, inch)    -> {cm, X * 2.54}.
 
 %b und c
 maxitem([], Y)                  -> 
@@ -17,7 +17,7 @@ maxitem([V | VS], Y)            ->
     maxitem(VS, Y).
 
 maxitem([])     -> 0;
-maxitem(X)      -> maxitem(X, -10000).
+maxitem([V | VS])      -> maxitem(VS, V).
 
 %d
 diff(F, X, H) ->
