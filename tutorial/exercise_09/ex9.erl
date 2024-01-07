@@ -1,6 +1,8 @@
 -module(ex9).
 -export([start/1, start/2, get/0, clock/1, clock/3, ticker/2, timer/3, timerP/3]).
 
+
+% Assignment 1 
 ticker(Interval, Clock) ->
     receive
         stop -> 
@@ -45,7 +47,7 @@ clock(Time, SubPid, Paused) ->
     end.
 
 
-
+% Assignment 2
 timer(Interval, Duration, WhenDone) ->
     timerP(Duration, spawn(?MODULE, ticker, [Interval, self()]), WhenDone).
 
@@ -68,14 +70,12 @@ timerP(TimeLeft, Ticker, WhenDone) ->
             exit(normal)
     end.
 
-
+% Main
 start(Interval) ->
     Clock = spawn(?MODULE, clock, [Interval]),
     io:format("Starting Clock Process with PID ~p\n",[Clock]),
     register(clockProcess, Clock),
     ok.
-
-
 
 start(Interval, Duration) ->
     WhenDone = fun() -> io:format("Timer Finished \n") end,
