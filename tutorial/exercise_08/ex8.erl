@@ -90,9 +90,6 @@ start() ->
    P2!{filter,33},
 
    C ! reset, 
-   C ! {filter, 1}, 
-   C ! {filter, b}, 
-   C ! {filter, 3},
 
    ok.
 

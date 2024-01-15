@@ -54,12 +54,12 @@ client(Interval) ->
     client(0, 0, spawn(?MODULE, ticker, [Interval, self()])).
 
 client(Time, T1, SubPid) ->
-    % if 
-    %     Time rem 50 == 0 ->
-    %         self() ! adjust;
-    %     true ->
-    %         ok
-    % end, 
+    if 
+        Time rem 50 == 0 ->
+            self() ! adjust;
+        true ->
+            ok
+    end, 
     receive
         {tick, Pid} ->
             if 
@@ -172,11 +172,11 @@ run3 () ->
     timer:sleep(1000),
 
 
-    Client2 = spawn(?MODULE, client, [100]),
+    Client2 = spawn(?MODULE, client, [55]),
     io:format("Starting Client Process with PID ~p\n",[Client2]),
     timer:sleep(1000),
 
-    Client3 = spawn(?MODULE, client, [150]),
+    Client3 = spawn(?MODULE, client, [60]),
     io:format("Starting Client Process with PID ~p\n",[Client3]),
     timer:sleep(1000),  
 
